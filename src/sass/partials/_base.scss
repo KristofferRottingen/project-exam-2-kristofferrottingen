@@ -1,0 +1,47 @@
+.loader {
+    border: 15px solid lightgrey;
+    border-top: 15px solid $third-color;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px;
+}
+
+footer {
+    background-color: $primary-color;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 72px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 30px;
+    align-items: center;
+    color: $secondary-color;
+
+    @media (max-width: 550px) {
+        font-size: 11px;
+    }
+}

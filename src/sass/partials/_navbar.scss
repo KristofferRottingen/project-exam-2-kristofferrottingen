@@ -1,0 +1,108 @@
+.navbar{
+    background-color: $primary-color;
+    display: block !important;
+    padding-top: 0 !important;
+
+    @media (max-width: 991px) {
+        padding-top: 0.5rem !important;
+    }
+
+    .upper-nav {
+        background: $primary-color;
+        font-size: 13px;
+        padding: 0px 20px;
+        max-width: 1320px;
+        margin: 0 auto;
+
+        @media (max-width: 991px) {
+            display: none;
+        }
+
+    }
+
+    .container {
+        .nav-logo {
+            padding-bottom: 10px;
+    
+            @media (max-width: 991px) {
+                padding-top: 10px;
+            }
+        }
+
+        .web-nav a {
+            color: $secondary-color  !important;
+            transition: all 0.1s ease;
+
+            .icons {
+                font-size: 27px;
+            }
+
+            .fa-1 {
+                padding-left: 25px;
+            }
+        }
+
+        @media (min-width: 991px) {
+            #basic-navbar-nav {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .web-nav {
+                display: none !important;
+            }
+        }
+    }
+}
+
+
+
+
+
+.offcanvas {
+    background-color: $primary-color !important;
+    color: $secondary-color;
+
+    .offcanvas-body {
+    
+        .navbar-nav {
+            .nav-link {
+                color: $secondary-color;
+
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 1px;
+                    background-color: $secondary-color;
+                    display: inline-block;
+                }
+            }
+
+            .navbar-text {
+                a {
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+}
+
+
+
+.navbar-dark .web-nav .nav-link:focus, .navbar-dark .web-nav .nav-link:hover{
+    color: $third-color !important;
+}
+
+
+
+
+.offcanvas-header .btn-close{
+    background-color: $secondary-color;
+}
+
+.navbar-light .navbar-toggler{
+    border: none;
+    border-color: none;
+}
+

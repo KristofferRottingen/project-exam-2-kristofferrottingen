@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from 'react'
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import HookAxios from "../../hooks/HookAxios";
-import { url } from "../../api/Api";
+import { baseUrl, url } from "../../api/Api";
 import AdminNavbar from "../navbars/AdminNavbar";
 import AdminMenu from "./AdminMenu";
 import Header from "../text/Heading";
 import { useNavigate } from "react-router-dom";
-import AdminMediaDD from "./AdminMediaDD";
 
 const schema = yup.object().shape({
 	navn: yup.string().required("Produktet må ha et navn"),
@@ -21,6 +21,9 @@ const schema = yup.object().shape({
 });
 
 export default function AdminAddProduct () {
+    const [imageMedia, setImageMedia] = useState([]);
+
+    const mediaUrl = baseUrl + "wp/v2/media?per_page=100";
 
     const navigate = useNavigate();
 
@@ -30,6 +33,19 @@ export default function AdminAddProduct () {
 		resolver: yupResolver(schema),
 	});
 
+    useEffect(() => {
+        async function Media() {
+            try {
+                const resp = await useAxios.get(mediaUrl);
+                setImageMedia(resp.data)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        Media();
+        // eslint-disable-next-line
+    }, []);
+
 
 	async function onSubmit(data) {
 
@@ -38,12 +54,12 @@ export default function AdminAddProduct () {
             categories: "1",
             title: data.navn,
             fields: {
-                img1: null,
+                img1: data.featured_media,
                 navn: data.navn,
                 pb: data.pb,
                 pris: data.pris, 
                 sku: data.sku,
-                str: data.pris,
+                str: data.str,
                 tb: data.tb,
                 va: data.va,
             },
@@ -51,6 +67,7 @@ export default function AdminAddProduct () {
 
 
 		console.log(data);
+    
 
 		try {
 			const resp = await useAxios.post(url, data);
@@ -111,7 +128,16 @@ export default function AdminAddProduct () {
 
                                     <div className="field">
                                         <label>Bilde</label>
-                                        <AdminMediaDD />
+                                        <select {...register("featured_media")}>
+                                            <option value=''>Velg bilde</option>
+                                            {imageMedia.map((image) => {
+                                                return (
+                                                    <option key={image.id} value={image.id}>    
+                                                        {image.title.rendered}
+                                                    </option>
+                                                );
+                                            })}
+                                        </select>
                                     </div>
                                 </div>
 

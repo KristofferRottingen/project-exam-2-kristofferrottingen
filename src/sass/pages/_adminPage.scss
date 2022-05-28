@@ -370,21 +370,22 @@
                     }
                 }
 
-                .delete-btn {
-                    background-color: $secondary-color;
-                    color: $third-color;
-                    padding: 10px;
-                    margin-bottom: 40px;
-                    border: none;
-                    border-radius: 6px;
+            }
+
+            .delete-btn {
+                background-color: $secondary-color;
+                color: $third-color;
+                padding: 10px;
+                margin-bottom: 40px;
+                border: none;
+                border-radius: 6px;
+                transition: all 0.2s ease;
+                width: 150px;
+
+                &:hover {
                     transition: all 0.2s ease;
-                    width: 150px;
-            
-                    &:hover {
-                        transition: all 0.2s ease;
-                        background-color: $third-color;
-                        color: $secondary-color;
-                    }
+                    background-color: $third-color;
+                    color: $secondary-color;
                 }
             }
         }

@@ -3,11 +3,11 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import HookAxios from "../../hooks/HookAxios";
-import { url } from "../../api/Api";
+import { baseUrl, url } from "../../api/Api";
 import AdminNavbar from "../navbars/AdminNavbar";
 import AdminMenu from "./AdminMenu";
 import Header from "../text/Heading";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loader from '../Loader';
 import DeleteButton from "./DeleteButton";
@@ -26,6 +26,8 @@ const schema = yup.object().shape({
 export default function AdminEdit() {
 	const [inputValue, setInputValue] = useState(null);
 	const [fetchingPost, setFetchingPost] = useState(true);
+    const [imageMedia, setImageMedia] = useState([]);
+    const mediaUrl = baseUrl + "wp/v2/media?per_page=100";
 
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(schema),
@@ -35,6 +37,8 @@ export default function AdminEdit() {
 
 	let { id } = useParams();
 
+    const navigate = useNavigate();
+
     const detailUrl = url + id;
 
 	useEffect(() => {
@@ -43,12 +47,15 @@ export default function AdminEdit() {
 				try {
 					const resp = await useAxios.get(detailUrl);
 					setInputValue(resp.data);
+                    const response = await useAxios.get(mediaUrl);
+                    setImageMedia(response.data)
 				} catch (error) {
 					console.log(error);
 				} finally {
 					setFetchingPost(false);
 				}
 			} getInputValues();
+            // eslint-disable-next-line
 		},[]
 	);
 
@@ -59,7 +66,7 @@ export default function AdminEdit() {
             categories: "1",
             title: data.navn,
             fields: {
-                img1: null,
+                img1: data.featured_media,
                 navn: data.navn,
                 pb: data.pb,
                 pris: data.pris, 
@@ -76,9 +83,10 @@ export default function AdminEdit() {
 		try {
 			const resp = await useAxios.put(detailUrl, data);
 			console.log(resp.data);
+            navigate("/admin/produkter")
 		} catch (error) {
 			console.log(error);
-		}
+		} 
 	}
 
 
@@ -96,6 +104,8 @@ export default function AdminEdit() {
             </div>
         </>
     )
+
+    
 
 
     return (
@@ -151,7 +161,16 @@ export default function AdminEdit() {
 
                                     <div className="field">
                                         <label>Bilde</label>
-                                        <AdminMediaDD />
+                                        <select defaultValue={inputValue.acf.img1} {...register("featured_media")}>
+                                            <option value=''>Velg bilde</option>
+                                            {imageMedia.map((image) => {
+                                                return (
+                                                    <option key={image.id} value={image.id}>    
+                                                        {image.title.rendered}
+                                                    </option>
+                                                );
+                                            })}
+                                        </select>
                                     </div>
                                 </div>
 

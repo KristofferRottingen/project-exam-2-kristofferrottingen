@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { baseUrl } from '../../api/Api';
 import HookAxios from '../../hooks/HookAxios';
 
-function AdminMediaDD({ register }) {
-    const [imageMedia, setImageMedia] = useState();
+export default function AdminMediaDD({ register }) {
+    const [imageMedia, setImageMedia] = useState([]);
     
-    const mediaUrl = baseUrl + "wp/v2/media";
+    const mediaUrl = baseUrl + "wp/v2/media?per_page=100";
 
     const useAxios = HookAxios();
 
@@ -21,23 +21,23 @@ function AdminMediaDD({ register }) {
             }
         }
         Media();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <select name='featured_media' ref={register}>
+        <select {...register("featured_media")}>
             <option value=''>Velg bilde</option>
             {imageMedia.map((image) => {
                 return (
                     <option key={image.id} value={image.id}>    
                         {image.title.rendered}
                     </option>
-                )
+                );
             })}
         </select>
     )
 }
 
-export default AdminMediaDD;
 
 AdminMediaDD.propTypes = {
     register: PropTypes.func,

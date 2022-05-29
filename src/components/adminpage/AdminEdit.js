@@ -11,7 +11,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loader from '../Loader';
 import DeleteButton from "./DeleteButton";
-import AdminMediaDD from "./AdminMediaDD";
 
 const schema = yup.object().shape({
 	navn: yup.string().required("Produktet må ha et navn"),
@@ -78,11 +77,9 @@ export default function AdminEdit() {
         };
 
 
-		console.log(data);
 
 		try {
 			const resp = await useAxios.put(detailUrl, data);
-			console.log(resp.data);
             navigate("/admin/produkter")
 		} catch (error) {
 			console.log(error);
@@ -104,9 +101,7 @@ export default function AdminEdit() {
             </div>
         </>
     )
-
     
-
 
     return (
         <>
@@ -119,20 +114,20 @@ export default function AdminEdit() {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <fieldset>
                                 <div className="row-1 rows">
-                                    <div className="field">
+                                    <div className="field field-padding">
                                         <label>NAVN</label>
                                         <input defaultValue={inputValue.acf.navn} {...register("navn")} />
                                         {errors.navn && <span>{errors.navn.message}</span>}
                                     </div>
 
 
-                                    <div className="field">
+                                    <div className="field field-padding">
                                         <label>SKU</label>
                                         <input defaultValue={inputValue.acf.sku} {...register("sku")} />
                                         {errors.sku && <span>{errors.sku.message}</span>}
                                     </div>
 
-                                    <div className="field">
+                                    <div className="field field-padding">
                                         <label>ID</label>
                                         <input defaultValue={inputValue.id} {...register("id")} />
                                     </div>
@@ -159,7 +154,7 @@ export default function AdminEdit() {
                                         {errors.pb && <span>{errors.pb.message}</span>}
                                     </div>
 
-                                    <div className="field">
+                                    <div className="field field-padding">
                                         <label>Bilde</label>
                                         <select defaultValue={inputValue.acf.img1} {...register("featured_media")}>
                                             <option value=''>Velg bilde</option>

@@ -427,6 +427,28 @@
             }
         }
 
+        @media (max-width: 650px) {
+
+            .add-products-content {
+
+                form {
+                    fieldset {
+                        .row-3, .row-1 {
+                            flex-direction: column;
+
+                            .field-padding {
+                                padding-top: 10px;
+
+                                select {
+                                    max-width: 200px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         @media (max-width: 430px) {
 
             .add-products-content {

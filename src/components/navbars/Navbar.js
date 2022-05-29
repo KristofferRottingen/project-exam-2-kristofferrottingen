@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import { Navbar, Nav, Container, Offcanvas } from 'react-bootstrap';
 import EvonLogo from '../../images/logo-liggende.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import AuthCon from '../../context/Auth';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -25,7 +23,7 @@ function Navs() {
       <Navbar.Collapse className="upper-nav justify-content-end">
         {authState ? (
           <Navbar.Text>
-            Heisann: {authState.user_nicename} | <Link to="/admin">Admin</Link> | <a onClick={LogOut}>Logg ut</a> 
+            Heisann: {authState.user_nicename} | <Link to="/admin/produkter">Admin</Link> | <a onClick={LogOut}>Logg ut</a> 
           </Navbar.Text>) : 
           (
             <Navbar.Text>
@@ -59,12 +57,9 @@ function Navs() {
               <Link className='nav-link' to="/">Hjem</Link>
               <Link className='nav-link' to="/produkter">Produkter</Link>
               <Link className='nav-link' to="/kontakt">Kontakt oss</Link>
-              <Link className='nav-link' to='/cart'>
-                <FontAwesomeIcon className='icons' icon={faCartShopping}/>
-              </Link>
               {authState ? (
                 <Navbar.Text>
-                  Heisann: {authState.user_nicename} | <Link to="/admin">Admin</Link> <a onClick={LogOut}>Logg ut</a> 
+                  Heisann: {authState.user_nicename} | <Link to="/admin/produkter">Admin</Link> <a onClick={LogOut}>Logg ut</a> 
                 </Navbar.Text>) : 
                 (
                   <Navbar.Text>
@@ -81,9 +76,6 @@ function Navs() {
           <Link className='nav-link' to="/produkter">Produkter</Link>
           <Link className='nav-link' to="/kontakt">Kontakt oss</Link>
           <Search />
-          <Link className='nav-link' to='/cart'>
-            <FontAwesomeIcon className='icons' icon={faCartShopping}/>
-          </Link>
         </Nav>  
       </Container>
     </Navbar>

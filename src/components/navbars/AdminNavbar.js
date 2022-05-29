@@ -48,7 +48,6 @@ function AdminNavbar() {
                         </Offcanvas.Header>
                         <Offcanvas.Body>
                             <Nav  className="me-auto justify-content-end flex-grow-1 pe-3">
-                                <Link className='nav-link' to="/admin/ordre">Ordre</Link>
                                 <Link className='nav-link' to="/admin/produkter">Produkter</Link>
                                 <Link className='nav-link' to="/admin/legg-til-produkt">Legg til produkt</Link>
                                 <Link className='nav-link' to="/admin/henvendelser">Meldinger</Link>

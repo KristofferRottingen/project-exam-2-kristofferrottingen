@@ -9,7 +9,6 @@ function AdminMenu() {
         <Navbar  expand="lg">
             <Nav className="me-auto admin-menu-nav">
                 <Header title='ADMIN MENY' />
-                <Link className='nav-link' to="/admin/ordre">Ordre</Link>
                 <Link className='nav-link' to="/admin/produkter">Produkter</Link>
                 <Link className='nav-link' to="/admin/legg-til-produkt">Legg til produkt</Link>
                 <Link className='nav-link' to="/admin/henvendelser">Meldinger</Link>

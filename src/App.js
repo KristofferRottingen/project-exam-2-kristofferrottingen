@@ -8,7 +8,6 @@ import DetailsPage from "./sites/DetailsPage";
 import ContactPage from "./sites/ContactPage";
 import LoginForm from "./sites/Login";
 import { AuthProv } from "./context/Auth";
-import AdminPage from "./sites/AdminPage";
 import AdminProducts from "./components/adminpage/AdminProducts";
 import AdminAddProduct from "./components/adminpage/AdminAddProduct"
 import AdminMessages from "./components/adminpage/AdminMessages";
@@ -27,7 +26,6 @@ function App() {
             <Route path="/detail/:id" element={<DetailsPage />} />
             <Route path="/kontakt" exact element={<ContactPage />} />
             <Route path="/login" exact element={<LoginForm />} />
-            <Route path="/admin" element={<AdminPage />} />
             <Route path="/admin/produkter" element={<AdminProducts />} />
             <Route path="/admin/legg-til-produkt" element={<AdminAddProduct />} />
             <Route path="/admin/henvendelser" element={<AdminMessages />} />

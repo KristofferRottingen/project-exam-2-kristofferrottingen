@@ -36,14 +36,11 @@ function EnquiryForm({ productImg, productName }) {
             },
         };
 
-        console.log(data);
-
         const form = document.querySelector(".enquiry-section");
 
         try {
             
 			const resp = await useAxios.post(url, data);
-			console.log(resp.data);
 
             if(resp.data.modified){
                 form.innerHTML=`<h2>Takk for din feedback!</h2>`;
@@ -52,8 +49,6 @@ function EnquiryForm({ productImg, productName }) {
 			console.log(error);
 		}
     }
-
-    console.log(errors);
 
     return (
         <form className='enquiry-form' onSubmit={handleSubmit(dataSubmit)}>

@@ -20,6 +20,13 @@
             font-size: 35px;
         }
 
+        .login-error{
+            text-align: center;
+            font-size: 14px;
+            color: red;
+            max-width: 230px;
+        }
+
         fieldset{
             display: flex;
             flex-direction: column;

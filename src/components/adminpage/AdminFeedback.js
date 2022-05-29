@@ -6,6 +6,7 @@ import AdminNavbar from '../navbars/AdminNavbar';
 import Header from '../text/Heading';
 import AdminMenu from './AdminMenu';
 import AdminModal from './AdminModal';
+import DeleteButton from './DeleteButton';
 
 function AdminMessages() {
 
@@ -129,6 +130,9 @@ function AdminMessages() {
                                                     </div>
                                                 </AdminModal>
                                                 
+                                            </td>
+                                            <td>
+                                                <DeleteButton id={id} />
                                             </td>
                                         </tr>
                                     </tbody>

@@ -5,7 +5,7 @@ import axios from "axios";
 import { urlJWT } from "../api/Api";
 import Header from "../components/text/Heading";
 import AuthCon from "../context/Auth";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Navs from "../components/navbars/Navbar";
 
@@ -23,18 +23,16 @@ export default function LoginForm() {
     });
 
     const [authState, setAuthState] = useContext(AuthCon);
+    const [error, setError] = useState(false);
 
 	async function onSubmit(data) {
 
-		console.log(errors);
-
 		try {
 			const resp = await axios.post(urlJWT, data);
-			console.log(resp.data);
             setAuthState(resp.data);
             navigate("/admin");
 		} catch (error) {
-			console.log(error);	
+			setError(true);
 		}
 	}
 
@@ -44,6 +42,7 @@ export default function LoginForm() {
             <div className="login-page">
                 <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
                     <Header title="Logg inn" />
+                    {error ? <span className="login-error">Brukernavn og passord er feil eller ikke gyldig</span> : ""}
                     <fieldset>
                         <div className="login-section">
                             <label>Brukernavn</label>

@@ -37,14 +37,12 @@ function ContactForm() {
             },
         };
 
-        console.log(data);
 
         const form = document.querySelector(".contact-form");
 
         try {
             
 			const resp = await useAxios.post(url, data);
-			console.log(resp.data);
 
             if(resp.data.modified){
                 form.innerHTML=`<h2>Takk for din henvendelse!</h2>`;
@@ -53,9 +51,7 @@ function ContactForm() {
 			console.log(error);
 		}
     }
-
-    console.log(errors);
-
+    
     return (
         <form className='contact-form' onSubmit={handleSubmit(dataSubmit)}>
             <label>Navn</label>

@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { url } from '../../api/Api';
@@ -23,9 +23,13 @@ function DeleteButton({ id }) {
             }
         }
     }
-  return (
-        <button className='delete-btn' onClick={deleteHandle}>Fjern Produkt</button>
-  )
+    return (
+        <button className='delete-btn message-delete-btn' onClick={deleteHandle}>Fjern</button>
+    )
 }
 
-export default DeleteButton
+export default DeleteButton;
+
+DeleteButton.propTypes = {
+    id: PropTypes.number.isRequired,
+}

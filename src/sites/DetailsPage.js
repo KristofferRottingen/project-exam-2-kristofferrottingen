@@ -1,7 +1,4 @@
-import React, { useContext } from 'react';
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+import React from 'react';
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { url, pdvlProducts } from '../api/Api';
@@ -9,14 +6,7 @@ import Loader from '../components/Loader';
 import Navs from '../components/navbars/Navbar';
 import GetProducts from '../components/GetProducts';
 import { Tabs, Tab } from 'react-bootstrap';
-import AuthCon from '../context/Auth';
-import axios from 'axios';
 import EnquiryForm from '../components/enquiry/EnquiryForm';
-
-const userSchema = yup.object().shape({
-	username: yup.string().required("Brukernavnet ditt mangler eller er ikke gyldig"),
-	password: yup.string().required("Passordet ditt mangler eller er ikke gyldig"),
-});
  
 
 function DetailsPage() {
@@ -24,6 +14,7 @@ function DetailsPage() {
     const [conProd, setConProd] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
 
     let navigate = useNavigate();
     const { id } = useParams();
@@ -33,31 +24,9 @@ function DetailsPage() {
 
     const detailUrl = url + id;
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(userSchema),
-    });
-
-    const [cart, setCart] = useContext(AuthCon);
-
-    async function onSubmit(storage) {
-
-
-        storage = {
-            title: "test"
-        }
-
-		try {
-			const prodInfo = await axios.post(detailUrl, storage);
-
-            if(prodInfo.ok) {
-                const localStrg = await prodInfo.json();
-                setCart(localStrg.storage);
-            }
-			
-		} catch (error) {
-			console.log(error);	
-		}
-	}
+    
+    
+    
 
    
     useEffect( function() {
@@ -82,7 +51,8 @@ function DetailsPage() {
             }
         }fetchInfo();
 
-    }, [detailUrl, pdvlProducts]);
+        // eslint-disable-next-line
+    }, [detailUrl]);
 
     if (loading) {
         return (
@@ -136,7 +106,6 @@ function DetailsPage() {
                         <p>Størrelse</p>
                         <button>{info.acf.str}</button>
                     </div>
-                    <button onSubmit={handleSubmit(onSubmit)} className="details-button">Legg i handlekurv</button>
                     <div className='product-spec'>
                         <Tabs defaultActiveKey="va" id="uncontrolled-tab-example" className="mb-3">
                             <Tab eventKey="va" title="Vaskeanvisning">

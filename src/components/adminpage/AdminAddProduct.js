@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 const schema = yup.object().shape({
 	navn: yup.string().required("Produktet må ha et navn"),
     sku: yup.string().required("Produktet må ha et sku"),
-    pris: yup.number().required().positive().integer("Produktet må ha en pris"),
     pb: yup.string().required("Produktet må ha en produkt beskrivelse"),
     str: yup.string().required("Produktet må ha en størrelse"),
     tb: yup.string().required("Produktet må ha en teknisk beskrivelse"),
@@ -66,12 +65,10 @@ export default function AdminAddProduct () {
         };
 
 
-		console.log(data);
     
 
 		try {
 			const resp = await useAxios.post(url, data);
-			console.log(resp.data);
             navigate("/admin/produkter");
 		} catch (error) {
 			console.log(error);
@@ -91,14 +88,14 @@ export default function AdminAddProduct () {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <fieldset>
                                 <div className="row-1 rows">
-                                    <div className="field">
+                                    <div className="field field-padding">
                                         <label>NAVN</label>
                                         <input {...register("navn")} />
                                         {errors.navn && <span>{errors.navn.message}</span>}
                                     </div>
 
 
-                                    <div className="field">
+                                    <div className="field field-padding">
                                         <label>SKU</label>
                                         <input {...register("sku")} />
                                         {errors.sku && <span>{errors.sku.message}</span>}
@@ -109,7 +106,6 @@ export default function AdminAddProduct () {
                                     <div className="field">
                                         <label>PRIS</label>
                                         <input {...register("pris")} />
-                                        {errors.pris && <span>{errors.pris.message}</span>}
                                     </div>
 
                                     <div className="field">
@@ -126,7 +122,7 @@ export default function AdminAddProduct () {
                                         {errors.pb && <span>{errors.pb.message}</span>}
                                     </div>
 
-                                    <div className="field">
+                                    <div className="field field-padding">
                                         <label>Bilde</label>
                                         <select {...register("featured_media")}>
                                             <option value=''>Velg bilde</option>

@@ -31,7 +31,7 @@ export default function LoginForm() {
 			const resp = await axios.post(urlJWT, data);
             setAuthState(resp.data);
             console.log(authState);
-            navigate("/admin");
+            navigate("/admin/produkter");
 		} catch (error) {
 			setError(true);
 		}

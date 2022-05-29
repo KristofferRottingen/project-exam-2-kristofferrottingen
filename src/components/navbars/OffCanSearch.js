@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { productsUrl } from '../../api/Api';
 
 function OffCanSearch() {
     const searchResult = document.querySelector(".off-can-search-results");
     const [searchVal, setSearchVal] = useState("");
     const [searchData, setSearchData] = useState([]);
+
 
     useEffect(() => {
         
@@ -22,7 +24,6 @@ function OffCanSearch() {
 		    }
         } fetchProucts();
     }, []);
-
     
 
   return (
@@ -39,7 +40,7 @@ function OffCanSearch() {
                     }
                     return "";
                 }).map((value) => {
-                    return <a key={value.id} href={`/detail/${value.id}`}>{value.acf.navn}</a>
+                    return <Link key={value.id} to={`/detail/${value.id}`}>{value.acf.navn}</Link>
                 })
             }
         </div>

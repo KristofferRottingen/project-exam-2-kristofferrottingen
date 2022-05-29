@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import { productsUrl } from '../../api/Api';
 
 function Search() {
@@ -39,7 +40,7 @@ function Search() {
                     }
                     return "";
                 }).map((value) => {
-                    return <a key={value.id} href={`/detail/${value.id}`}>{value.acf.navn}</a>
+                    return <Link key={value.id} to={`/detail/${value.id}`}>{value.acf.navn}</Link>
                 })
             }
         </div>

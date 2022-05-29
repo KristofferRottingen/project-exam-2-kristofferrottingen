@@ -3,6 +3,10 @@
     display: block !important;
     padding-top: 0 !important;
 
+    .logout-btn {
+        cursor: pointer;
+    }
+
     @media (max-width: 991px) {
         padding-top: 0.5rem !important;
     }

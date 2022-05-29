@@ -79,6 +79,7 @@ export default function AdminEdit() {
 
 		try {
 			const resp = await useAxios.put(detailUrl, data);
+            console.log(resp);
             navigate("/admin/produkter")
 		} catch (error) {
 			console.log(error);

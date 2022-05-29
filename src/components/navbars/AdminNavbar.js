@@ -30,7 +30,7 @@ function AdminNavbar() {
                 </Link>
                 {authState ? (
                         <Navbar.Text>
-                            Heisann: {authState.user_nicename} | <a onClick={LogOut}>Logg ut</a>
+                            Heisann: {authState.user_nicename} | <span className="logout-btn" onClick={LogOut}>Logg ut</span>
                         </Navbar.Text>
                     ) : (
                         navigate("/")
@@ -54,7 +54,7 @@ function AdminNavbar() {
                                 <Link className='nav-link' to="/admin/feedback">Feedback</Link>
                                 {authState ? (
                                         <Navbar.Text>
-                                            Heisann: {authState.user_nicename} | <a onClick={LogOut}>Logg ut</a>
+                                            Heisann: {authState.user_nicename} | <span className="logout-btn" onClick={LogOut}>Logg ut</span>
                                         </Navbar.Text>
                                     ) : (
                                         navigate("/")

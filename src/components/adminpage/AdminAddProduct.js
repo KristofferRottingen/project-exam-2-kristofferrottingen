@@ -69,6 +69,7 @@ export default function AdminAddProduct () {
 
 		try {
 			const resp = await useAxios.post(url, data);
+            console.log(resp);
             navigate("/admin/produkter");
 		} catch (error) {
 			console.log(error);

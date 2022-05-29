@@ -14,7 +14,7 @@ function ProductFilter({ setActiveCategory, activeCategory, setCatFiltered, prod
     );
 
     setCatFiltered(filtered);
-
+    // eslint-disable-next-line
   }, [activeCategory]);
   
   return (

@@ -6,8 +6,8 @@ function About() {
         <div className='about-left'>
           <h2>Om oss</h2>
           <div className='line-about'></div>
-          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
-          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores.</p>
+          <p>Evon er ett nytt merke innen sykkel og sykkelutstyr som skal være ett rimelig og godt alternativ til alle som sykler.</p>
+          <p>Vi er en frittstående norsk grossostvirksomhet som selger til bedrifter som har tilknytting til sports- og sykkelbransjen.</p>
         </div>
     </div>
   )

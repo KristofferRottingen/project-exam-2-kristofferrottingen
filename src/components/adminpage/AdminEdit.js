@@ -15,7 +15,6 @@ import DeleteButton from "./DeleteButton";
 const schema = yup.object().shape({
 	navn: yup.string().required("Produktet må ha et navn"),
     sku: yup.string().required("Produktet må ha et sku"),
-    pris: yup.number().required().positive().integer("Produktet må ha en pris"),
     pb: yup.string().required("Produktet må ha en produkt beskrivelse"),
     str: yup.string().required("Produktet må ha en størrelse"),
     tb: yup.string().required("Produktet må ha en teknisk beskrivelse"),
@@ -137,7 +136,6 @@ export default function AdminEdit() {
                                     <div className="field">
                                         <label>PRIS</label>
                                         <input defaultValue={inputValue.acf.pris} {...register("pris")} />
-                                        {errors.pris && <span>{errors.pris.message}</span>}
                                     </div>
 
                                     <div className="field">

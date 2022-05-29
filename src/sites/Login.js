@@ -30,6 +30,7 @@ export default function LoginForm() {
 		try {
 			const resp = await axios.post(urlJWT, data);
             setAuthState(resp.data);
+            console.log(authState);
             navigate("/admin");
 		} catch (error) {
 			setError(true);

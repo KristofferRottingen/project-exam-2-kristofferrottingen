@@ -69,7 +69,7 @@ export default function AdminEdit() {
                 pb: data.pb,
                 pris: data.pris, 
                 sku: data.sku,
-                str: data.pris,
+                str: data.str,
                 tb: data.tb,
                 va: data.va,
             },

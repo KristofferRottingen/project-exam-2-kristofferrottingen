@@ -5,7 +5,7 @@
 
 ## Description
 
-The Client is Elements Productions AS which needed a Website for Evon. This is a bicycle brand who sells products around the normal bicycle and bicycle it selves. I was allowed to build the website under the exam assignment criteria, as the website is only gonna be used for marketing the new brand and maybe tender competitions. They will later on use the website to connect it with Magento when it is suppose to go live.
+The Client is Elements Productions AS which needed a Website for Evon. This is a bicycle brand who sells products around the normal bicycle and bicycle it selves. The project is using a Wordpress CMS and has a admin side to it where the admin can read all the messages and feedback that is sent to the website from custemors/users. The admin will also be able to delete, edit and add new products. 
 
 
 ## Built With

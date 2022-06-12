@@ -53,4 +53,5 @@ password: Pass1234
 
 ## Acknowledgments
 
-This is where you can add any acknowledgements if you'd like, such as to people who have helped you or any code snippets you'd like to mention. You can delete this section if you don't have any acknowledgements to make.
+- Credit: https://usehooks.com/useLocalStorage/ used on the local storage/ login side of the website.
+- Images is taken from freepik.com

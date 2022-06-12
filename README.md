@@ -41,6 +41,8 @@ npm run start
 
 ## Contributing
 
+Website: https://evon-website.netlify.app/
+
 Login details:
 
 username: kriroe06
